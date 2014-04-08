@@ -1,0 +1,33 @@
+%h1{style: "display: none"} SUCCESS!!!
+
+= link_to "Click Me If You Can", "javascript:void()", class: "btn btn-primary", id: "myButton", style: "display: none; position: fixed;"
+
+=# link_to "xx", "javascript:void()", class: "btn btn-primary", id: "xx", style: "position: fixed;"
+
+
+:coffeescript
+  clicked = false
+
+  hideButton = ->
+    $("#myButton").hide()
+    setTimeout(placeBtnRandomly, 1000);
+
+  placeBtnRandomly = ->
+    console.log "ping"
+    if clicked
+      return false
+    else
+      $button      = $("#myButton")
+      boundryWidth  = window.innerWidth - $button.width()
+      boundryHeight = window.innerHeight - $button.height()
+      $button.css("left", Math.floor(Math.random() * boundryWidth) + "px")
+      $button.css("top", Math.floor(Math.random() * boundryHeight) + "px")
+      $button.show()
+      setTimeout hideButton, 500
+
+  $(document).on "click", "#myButton", ->
+    $("h1").show()
+    clicked = true
+
+  $(document).ready ->
+    setTimeout(placeBtnRandomly, 1000);

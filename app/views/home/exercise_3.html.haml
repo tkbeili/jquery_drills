@@ -1,0 +1,13 @@
+Write something..
+= text_field_tag "task"
+
+%span#result
+:coffeescript
+  $("#task").on "focus", ->
+    if !$(this).val()
+      $("#result").text("start typing..")
+
+  $("#task").on "keyup", ->
+    console.log backward
+    backward = $(this).val().split("").reverse().join("")
+    $("#result").text(backward)

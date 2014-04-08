@@ -1,0 +1,16 @@
+- (1..5).each do |x|
+  = link_to "Exercise #{x}", eval("exercise_#{x}_path"), class: "btn btn-primary"
+%br
+%br
+
+= link_to "Click Me", "javascript:void(0);", class: "btn btn-info my-button", id: "1"
+= link_to "Click Me", "javascript:void(0);", class: "btn btn-info my-button", id: "2"
+= link_to "Click Me", "javascript:void(0);", class: "btn btn-info my-button", id: "3"
+
+
+%br
+%br
+
+.box1{style: "width: 200px; height: 200px; background-color: red"}
+  .box2{style: "width: 100px; height: 100px; background-color: blue"}
+    .box3{style: "width: 50px; height: 50px; background-color: green"}
