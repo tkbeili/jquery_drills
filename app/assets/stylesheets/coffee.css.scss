@@ -1,0 +1,19 @@
+// Place all the styles related to the coffee controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.checked {
+  text-decoration: line-through;
+}
+
+ul.tasks {
+  list-style-type: none;
+}
+
+.completed {
+  min-height: 100px;
+  background-color: yellow;
+}
+
+.error {
+  color: red;
+}

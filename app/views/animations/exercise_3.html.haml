@@ -1,0 +1,9 @@
+.image-container= image_tag "drew.jpg"
+#status
+
+
+:coffeescript
+  $ ->
+    $(".image-container").draggable
+      start: -> $("#status").text("dragging..")
+      stop: -> $("#status").text("Done dragging..")

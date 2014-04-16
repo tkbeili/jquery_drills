@@ -47,5 +47,11 @@ $(document).ready(function() {
 
 
 
-
-
+$(document).on("submit", "#personal-info", function(event) {
+  var result;
+  result = "First Name: " + $("#First_Name").val() + " " +
+            "Last Name: " + $("#Last_Name").val() + " " + 
+            "Email: " + $("#Email").val();
+  $("#display").text(result);
+  return false;
+});

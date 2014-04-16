@@ -1,0 +1,9 @@
+= link_to "Click Me", "javascript:void(0);", class: "btn btn-primary"
+
+:coffeescript
+  $ ->
+    $(".btn").on "click", ->
+      $(@).animate
+        height: "+=10",
+        width: "+=50",
+        fontSize: "+=5"

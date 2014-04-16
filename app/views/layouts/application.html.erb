@@ -7,9 +7,17 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 </head>
 <body>
-  
-  <%= link_to "Home", root_path %>
+
   <div class="container">
+    <nav class="nav nav-bar">
+      <%= link_to "Home", root_path %>
+      |
+      <%= link_to "Animation", animations_path %>
+      |
+      <%= link_to "Coffee Script", coffee_path %>
+    </nav>
+    <br>
+    <br>
     <%= yield %>
   </div>
 

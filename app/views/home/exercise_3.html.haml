@@ -7,7 +7,9 @@ Write something..
     if !$(this).val()
       $("#result").text("start typing..")
 
-  $("#task").on "keyup", ->
-    console.log backward
+  $("#task").on "keyup", (event)->
+    console.log String.fromCharCode(event.which)
+    return if event.which == 9
+    console.log(event.which == 9)
     backward = $(this).val().split("").reverse().join("")
     $("#result").text(backward)

@@ -1,0 +1,6 @@
+= link_to "Click Me", "javascript:void(0);", class: "btn btn-primary"
+
+:coffeescript
+  $ ->
+    $(".btn").on "click", ->
+      $(@).toggleClass("btn-primary").toggleClass("btn-danger")

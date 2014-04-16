@@ -1,0 +1,14 @@
+.image-co= image_tag "drew.jpg"
+
+
+:coffeescript
+  $ ->
+    $("img").animate
+      width: "100%"
+      height: "100%"
+    , 1000, ->
+      $(@).effect("bounce", 1000, ->
+        $(@).effect("shake", 1000, ->
+          $(@).fadeOut()
+        )
+      )

@@ -1,0 +1,21 @@
+= text_field_tag "color", "", placeholder: "Type something.."
+%br
+Color Queue:
+#colors
+
+
+:coffeescript
+  colors = []
+  currentIndex = 0
+  changeColor = ->
+    $("body").css("background-color", colors[currentIndex])
+    currentIndex = if currentIndex >= (colors.length-1) then 0 else (currentIndex + 1)
+    
+  $ ->
+    $("#color").on "keyup", (event) ->
+      if event.keyCode == 13
+        colors.push $(@).val()
+        $("#colors").text colors.join(" ")
+        $(@).val("")
+    
+    setInterval(changeColor, 500)

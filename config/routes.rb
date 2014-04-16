@@ -4,6 +4,18 @@ JqueryDrills::Application.routes.draw do
     get "/exercise_#{x}" => "home#exercise_#{x}"
   end
 
+  get "/coffee" => "coffee#index"
+
+  (1..10).each do |x|
+    get "coffee/exercise_#{x}" => "coffee#exercise_#{x}"
+  end
+
+  get "/animations" => "animations#index"
+
+  (1..10).each do |x|
+    get "animations/exercise_#{x}" => "animations#exercise_#{x}"
+  end
+
   root "home#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

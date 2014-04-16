@@ -1,0 +1,47 @@
+
+= text_field_tag "class-name", "", placeholder: "Button Class"
+= text_field_tag "width", "", placeholder: "Button width"
+= text_field_tag "height", "", placeholder: "Button Height"
+= button_tag "generate", class: "generate"
+%br
+= button_tag "Randomize", id: "randomize"
+= button_tag "Animate", id: "animate"
+
+:coffeescript
+  buttons = []
+  $ ->
+
+    generateValidWidth = (width)->
+      maxWidth    = window.innerWidth - width
+      Math.floor(Math.random() * maxWidth)
+
+    generateValidHeight = (height)->
+      maxHeight    = window.innerHeight - height
+      Math.floor(Math.random() * maxHeight)
+
+
+    class Button
+      constructor: (@className, @width, @height) ->
+      placeOnScreen: ->
+        @element = $("<a>", {text: "Click Me", width: @width, class: @className + " btn", height: @height, position: "fixed"})
+        @element.css("position", "fixed")
+        @.randomize()
+        $("body").append(@element)
+      randomize: ->
+        @element.css("top", generateValidHeight(@height))
+        @element.css("left", generateValidWidth(@width))
+      animate: ->
+        @element.animate
+          top: generateValidHeight(@height)
+          left: generateValidWidth(@width)
+
+    $(".generate").on "click", ->
+      button = new Button($("#class-name").val(), $("#width").val(), $("#height").val())
+      button.placeOnScreen()
+      buttons.push(button)
+
+    $("#randomize").on "click", ->
+      button.randomize() for button in buttons
+    
+    $("#animate").on "click", ->
+      button.animate() for button in buttons

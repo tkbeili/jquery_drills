@@ -1,0 +1,11 @@
+%ul
+  %li Vancouver
+  %li Burnaby
+  %li Richmond
+  %li Coquitlam
+
+
+:coffeescript
+  $ ->
+    $("li").draggable
+      start: -> $(@).fadeOut()

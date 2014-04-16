@@ -1,0 +1,9 @@
+- 50.times do
+  = link_to "Click Me", "javascript:void(0);", class: "btn btn-primary"
+
+:coffeescript
+  $ ->
+    $(".btn").on "click", ->
+      effects = ["blind","bounce","clip","drop","explode","fade","fold","highlight","puff","pulsate","scale","shake","size","slide","transfer"]
+      randomEffect = effects[Math.floor(effects.length * Math.random())]
+      $(@).effect(randomEffect)

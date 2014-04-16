@@ -1,0 +1,27 @@
+%h2 Pending Tasks
+%ul.tasks.pending
+  - 5.times do |x|
+    %li.checkbox
+      %label
+        = check_box_tag "box#{x}", "abc", nil, class: "chkbox"
+        = "Check Box #{x}"
+
+%h2 Completed Tasks
+%ul.tasks.completed
+
+:coffeescript
+  $ ->
+    $(".chkbox").on "change", ->
+      # $(@).parent().toggleClass("checked")
+      if @.checked
+        $(@).parent().addClass("checked")
+        $li = $(@).parents "li"
+        $li.fadeOut 500, ->
+          $(@).appendTo ".completed"
+          $(@).fadeIn 300
+      else
+        $(@).parent().removeClass("checked")
+        $li = $(@).parents "li"
+        $li.fadeOut 300, ->
+          $(@).appendTo ".pending"
+          $(@).fadeIn 300

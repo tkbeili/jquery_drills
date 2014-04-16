@@ -1,0 +1,15 @@
+%ul{style: "list-style-type: none;"}
+  - 5.times do |x|
+    %li.checkbox
+      %label
+        = check_box_tag "box#{x}", "abc", nil, class: "chkbox"
+        = "Check Box #{x}"
+
+:coffeescript
+  $ ->
+    $(".chkbox").on "change", ->
+      # $(@).parent().toggleClass("checked")
+      if @.checked
+        $(@).parent().addClass("checked")
+      else
+        $(@).parent().removeClass("checked")

@@ -1,0 +1,13 @@
+= text_field_tag "sentence", "", placeholder: "Type something.."
+#shuffled
+
+:coffeescript
+  capitalize = (string) ->
+    string.charAt(0).toUpperCase() + string.slice(1)
+  
+  $ ->
+    $("#sentence").on "keyup", ->
+      word_array = $(@).val().split(" ")
+      word_array = word_array.map (word) -> capitalize(word)
+      $("#shuffled").text word_array.join(" ")
+

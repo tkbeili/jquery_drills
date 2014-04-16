@@ -1,0 +1,30 @@
+= text_field_tag "email", "", placeholder: "email"
+.email-valid.glyphicon.glyphicon-ok.hide
+.email-invalid.glyphicon.glyphicon-remove.hide
+%br
+%br
+= password_field_tag "password", "", placeholder: "password"
+.password-valid.glyphicon.glyphicon-ok.hide
+.password-invalid.glyphicon.glyphicon-remove.hide
+%br
+%label
+  = check_box_tag "remember_me", "abc", nil, class: "chkbox"
+  Remember Me
+
+:coffeescript
+  $ ->
+    $("#email").on "blur", ->
+      re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      if re.test $(this).val()
+        $(".email-valid").removeClass("hide")
+        $(".email-invalid").addClass("hide")
+      else
+        $(".email-valid").addClass("hide")
+        $(".email-invalid").removeClass("hide")
+    $("#password").on "blur", ->
+      if $(this).val().length > 7
+        $(".password-valid").removeClass("hide")
+        $(".password-invalid").addClass("hide")
+      else
+        $(".password-valid").addClass("hide")
+        $(".password-invalid").removeClass("hide")

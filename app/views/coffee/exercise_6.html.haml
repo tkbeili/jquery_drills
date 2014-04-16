@@ -1,0 +1,13 @@
+.col-sm-6.col-lg-6.col-xs-6
+  #box1.box{style: "z-index: 100; width: 100px; height: 100px; background-color: red"}
+  #box2.box{style: "z-index: 100; width: 100px; height: 100px; background-color: green"}
+  #box3.box{style: "z-index: 100; width: 100px; height: 100px; background-color: blue"}
+.col-sm-6.col-lg-6.col-xs-6
+  #drop-box{style: "z-index: 10; width: 400px; height: 400px; background-color: yellow"}
+
+:coffeescript
+  $ ->
+    $(".box").draggable()
+    $("#drop-box").droppable
+      drop: (event,ui )->
+        alert("You Dropped Item with id: " + $(ui.draggable).attr("id"));
